@@ -1,7 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.9-alpha</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>graphviz dot graph rendering plotting graphviznet</PackageTags>
+    <Description>Wrapper for the command-line GraphViz native binaries (version 2.44.0). The native binaries are included and deployed with this package</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,9 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="graphviz\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Update="graphviz\*" Pack="true" PackagePath="contentFiles" PackageCopyToOutput="true" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="GraphVizNet.targets" Pack="true" PackagePath="build"/>
   </ItemGroup>
 
 </Project>

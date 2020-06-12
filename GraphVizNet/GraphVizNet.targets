@@ -1,0 +1,8 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <GraphVizFiles Include="$(MSBuildThisFileDirectory)/../contentFiles/graphviz/*" />
+  </ItemGroup>
+  <Target Name="CopyGraphVizFiles" BeforeTargets="Build">
+    <Copy SourceFiles="@(GraphVizFiles)" DestinationFolder="$(TargetDir)graphviz/" />
+  </Target>
+</Project>

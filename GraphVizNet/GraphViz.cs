@@ -92,7 +92,7 @@ namespace GraphVizNet
                 StartInfo = new ProcessStartInfo
                 {
                     CreateNoWindow = true,
-                    FileName = "dot",
+                    FileName = "graphviz/dot",
                     Arguments = arguments,
                     WorkingDirectory = "graphviz",
                     RedirectStandardError = true,
