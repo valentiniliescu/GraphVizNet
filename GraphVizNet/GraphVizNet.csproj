@@ -2,10 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.0.10-alpha</Version>
+    <Version>1.0.0-beta</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>graphviz dot graph rendering plotting graphviznet</PackageTags>
-    <Description>Wrapper for the command-line GraphViz native binaries (version 2.44.0). The native binaries are included and deployed with this package</Description>
+    <Description>.NET wrapper for the command-line GraphViz native binaries. The binaries (version 2.44.0) are included and deployed with this package.</Description>
+    <PackageProjectUrl>https://github.com/valentiniliescu/GraphVizNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/valentiniliescu/GraphVizNet.git</RepositoryUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Copyright>Copyright 2020 Valentin Iliescu. All rights reserved.</Copyright>
+    <Authors>Valentin Iliescu</Authors>
+    <Company>Valentin Iliescu</Company>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
