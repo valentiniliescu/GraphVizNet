@@ -36,7 +36,7 @@ graphViz.Config.TreatWarningsAsErrors = true;
 ```
 
 
-If you create your own library or NuGet package that consumes GraphVizNet package, set the `PrivateAssets` on package reference to explicitly exclude `contentFiles`. One example would be to set it to `none`
+If you create your own library or NuGet package that references the GraphVizNet package, set the `PrivateAssets` on the package reference to explicitly exclude `contentFiles`, that will ensure the GraphViz binaries are copied to the output of projects that reference your library/NuGet. One example would be to set it to `none`
 ```xml
 <ItemGroup>
   <PackageReference Include="GraphVizNet" Version="1.0.0" PrivateAssets="none" />
