@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 
 namespace GraphVizNet
@@ -34,7 +35,26 @@ namespace GraphVizNet
                 throw new ArgumentNullException(nameof(outputFilePath));
             }
 
-            LayoutAndRender(graphFilePath, null, outputFilePath, out _, null, outputFormat);
+            LayoutAndRender(graphFilePath, null, outputFilePath, null, outputFormat);
+        }
+
+        /// <summary>
+        ///     Layouts and renders a graph in DOT format from a file.
+        /// </summary>
+        /// <param name="graphFilePath">Path to graph file.</param>
+        /// <param name="outputFormat">
+        ///     The output format, if it's null it will default to "dot". See
+        ///     https://www.graphviz.org/doc/info/output.html for more output formats.
+        /// </param>
+        /// <returns>The output.</returns>
+        public byte[] LayoutAndRenderDotGraphFromFile(string graphFilePath, string outputFormat)
+        {
+            if (graphFilePath == null)
+            {
+                throw new ArgumentNullException(nameof(graphFilePath));
+            }
+
+            return LayoutAndRender(graphFilePath, null, null, null, outputFormat);
         }
 
         /// <summary>
@@ -58,7 +78,26 @@ namespace GraphVizNet
                 throw new ArgumentNullException(nameof(outputFilePath));
             }
 
-            LayoutAndRender(null, graph, outputFilePath, out _, null, outputFormat);
+            LayoutAndRender(null, graph, outputFilePath, null, outputFormat);
+        }
+
+        /// <summary>
+        ///     Layouts and renders a graph in DOT format.
+        /// </summary>
+        /// <param name="graph">The graph.</param>
+        /// <param name="outputFormat">
+        ///     The output format, if it's null it will default to "dot". See
+        ///     https://www.graphviz.org/doc/info/output.html for more output formats.
+        /// </param>
+        /// <returns>The output.</returns>
+        public byte[] LayoutAndRenderDotGraph(string graph, string outputFormat)
+        {
+            if (graph == null)
+            {
+                throw new ArgumentNullException(nameof(graph));
+            }
+
+            return LayoutAndRender(null, graph, null, null, outputFormat);
         }
 
         /// <summary>
@@ -66,8 +105,7 @@ namespace GraphVizNet
         /// </summary>
         /// <param name="graphFilePath">Path to graph file, can be null but then the graph must not be null.</param>
         /// <param name="graph">The graph, can be null but then the graph file path must not be null.</param>
-        /// <param name="outputFilePath">Path to output file. If it's null, the output parameter will have the command line output.</param>
-        /// <param name="output">The command line output. Don't use it for binary formats since the output is textual only.</param>
+        /// <param name="outputFilePath">Path to output file. If it's null, the return will have the command line output.</param>
         /// <param name="layoutAlgorithm">
         ///     The layout algorithm, if it's null it will default to "dot". See
         ///     https://www.graphviz.org/pdf/dot.1.pdf for more layout algorithms.
@@ -77,7 +115,8 @@ namespace GraphVizNet
         ///     https://www.graphviz.org/doc/info/output.html for more output formats.
         /// </param>
         /// <param name="extraCommandLineFlags">Any extra command line flags. See https://www.graphviz.org/doc/info/command.html </param>
-        public void LayoutAndRender(string graphFilePath, string graph, string outputFilePath, out string output, string layoutAlgorithm, string outputFormat,
+        /// <returns>The output of the command line.</returns>
+        public byte[] LayoutAndRender(string graphFilePath, string graph, string outputFilePath, string layoutAlgorithm, string outputFormat,
             params string[] extraCommandLineFlags)
         {
             if (graphFilePath == null && graph == null)
@@ -110,8 +149,15 @@ namespace GraphVizNet
                 graphVizProcess.StandardInput.Close();
             }
 
+            byte[] result;
+            using(Stream baseStream = graphVizProcess.StandardOutput.BaseStream)
+            using (var memoryStream = new MemoryStream())
+            {
+                baseStream.CopyTo(memoryStream);
+                result = memoryStream.ToArray();
+            }
+
             string errorAndWarningMessages = graphVizProcess.StandardError.ReadToEnd();
-            output = graphVizProcess.StandardOutput.ReadToEnd();
 
             graphVizProcess.WaitForExit(Config.TimeoutInMs);
 
@@ -124,6 +170,8 @@ namespace GraphVizNet
             {
                 throw new GraphVizException($"dot process exited with code: {graphVizProcess.ExitCode} but with warnings: {errorAndWarningMessages}");
             }
+
+            return result;
         }
 
         /// <summary>

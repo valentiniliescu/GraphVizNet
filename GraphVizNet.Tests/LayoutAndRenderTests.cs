@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GraphVizNet.Tests
@@ -84,7 +85,8 @@ namespace GraphVizNet.Tests
 
             var graphViz = new GraphViz();
 
-            graphViz.LayoutAndRender(null, graph, null, out string output, null, "svg");
+            byte[] result = graphViz.LayoutAndRender(null, graph, null, null, "svg");
+            string output = Encoding.ASCII.GetString(result);
 
             Assert.AreEqual(expectedOutput, output);
         }
@@ -168,7 +170,8 @@ namespace GraphVizNet.Tests
             var graphViz = new GraphViz();
 
             // ReSharper disable once StringLiteralTypo
-            graphViz.LayoutAndRender(null, graph, null, out string output, "neato", "svg");
+            byte[] result = graphViz.LayoutAndRender(null, graph, null, "neato", "svg");
+            string output = Encoding.ASCII.GetString(result);
 
             Assert.AreEqual(expectedOutput, output);
         }
@@ -181,7 +184,7 @@ namespace GraphVizNet.Tests
 
             var graphViz = new GraphViz();
 
-            graphViz.LayoutAndRender(null, graph, null, out _, null, "svg");
+            graphViz.LayoutAndRender(null, graph, null, null, "svg");
         }
 
         [TestMethod]
@@ -219,7 +222,8 @@ namespace GraphVizNet.Tests
 
             var graphViz = new GraphViz();
 
-            graphViz.LayoutAndRender(null, graph, null, out string output, null, "svg");
+            byte[] result = graphViz.LayoutAndRender(null, graph, null, null, "svg");
+            string output = Encoding.ASCII.GetString(result);
 
             Assert.AreEqual(expectedOutput, output);
         }
@@ -240,7 +244,7 @@ namespace GraphVizNet.Tests
             var graphViz = new GraphViz();
             graphViz.Config.TreatWarningsAsErrors = true;
 
-            graphViz.LayoutAndRender(null, graph, null, out _, null, "svg");
+            graphViz.LayoutAndRender(null, graph, null, null, "svg");
         }
     }
 }
