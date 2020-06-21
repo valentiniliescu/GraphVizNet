@@ -13,6 +13,7 @@
     <Authors>Valentin Iliescu</Authors>
     <Company>Valentin Iliescu</Company>
     <RepositoryType>git</RepositoryType>
+    <NoWarn>NU5100</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
