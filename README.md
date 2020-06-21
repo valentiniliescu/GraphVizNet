@@ -17,8 +17,7 @@ graphViz.LayoutAndRenderDotGraphFromFile(inputFilePath, outputFilePath, "png");
 ```
 
 
-For more flexible rendering use the `public void LayoutAndRender(string graphFilePath, string graph, string outputFilePath, out string output, string layoutAlgorithm, string outputFormat,
-            params string[] extraCommandLineFlags)` version, with the parameters:
+For more flexible rendering use the `LayoutAndRender` method, with the parameters:
 * `graphFilePath` - Path to graph file, can be null but then the graph must not be null.
 * `graph`-The graph, can be null but then the graph file path must not be null.
 * `outputFilePath` - Path to output file. If it's null, the output parameter will have the command line output.
@@ -35,6 +34,15 @@ These are the settings for the wrapper itself:
 var graphViz = new GraphViz();
 graphViz.Config.TreatWarningsAsErrors = true;
 ```
+
+
+If you create your own library or NuGet package that references the GraphVizNet package, set the `PrivateAssets` on the package reference to explicitly exclude `contentFiles`, that will ensure the GraphViz binaries are copied to the output of projects that reference your library/NuGet. One example would be to set it to `none`
+```xml
+<ItemGroup>
+  <PackageReference Include="GraphVizNet" Version="1.0.0" PrivateAssets="none" />
+</ItemGroup>
+```
+
 
 # Launch process vs PInvoke
 
