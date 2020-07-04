@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GraphVizNet</name>
+    </assembly>
+    <members>
+        <member name="T:GraphVizNet.GraphViz">
+            <summary>
+                The GraphViz wrapper class.
+            </summary>
+        </member>
+        <member name="M:GraphVizNet.GraphViz.#ctor">
+            <summary>
+                Creates a new GraphViz wrapper instance.
+            </summary>
+        </member>
+        <member name="P:GraphVizNet.GraphViz.Config">
+            <summary>
+                The GraphViz configuration.
+            </summary>
+        </member>
+        <member name="M:GraphVizNet.GraphViz.LayoutAndRenderDotGraphFromFile(System.String,System.String,System.String)">
+            <summary>
+                Layouts and renders a graph in DOT format from a file.
+            </summary>
+            <param name="graphFilePath">Path to graph file.</param>
+            <param name="outputFilePath">Path to output file.</param>
+            <param name="outputFormat">
+                The output format, if it's null it will default to "dot". See
+                https://www.graphviz.org/doc/info/output.html for more output formats.
+            </param>
+        </member>
+        <member name="M:GraphVizNet.GraphViz.LayoutAndRenderDotGraphFromFile(System.String,System.String)">
+            <summary>
+                Layouts and renders a graph in DOT format from a file.
+            </summary>
+            <param name="graphFilePath">Path to graph file.</param>
+            <param name="outputFormat">
+                The output format, if it's null it will default to "dot". See
+                https://www.graphviz.org/doc/info/output.html for more output formats.
+            </param>
+            <returns>The output.</returns>
+        </member>
+        <member name="M:GraphVizNet.GraphViz.LayoutAndRenderDotGraph(System.String,System.String,System.String)">
+            <summary>
+                Layouts and renders a graph in DOT format.
+            </summary>
+            <param name="graph">The graph.</param>
+            <param name="outputFilePath">Path to output file.</param>
+            <param name="outputFormat">
+                The output format, if it's null it will default to "dot". See
+                https://www.graphviz.org/doc/info/output.html for more output formats.
+            </param>
+        </member>
+        <member name="M:GraphVizNet.GraphViz.LayoutAndRenderDotGraph(System.String,System.String)">
+            <summary>
+                Layouts and renders a graph in DOT format.
+            </summary>
+            <param name="graph">The graph.</param>
+            <param name="outputFormat">
+                The output format, if it's null it will default to "dot". See
+                https://www.graphviz.org/doc/info/output.html for more output formats.
+            </param>
+            <returns>The output.</returns>
+        </member>
+        <member name="M:GraphVizNet.GraphViz.LayoutAndRender(System.String,System.String,System.String,System.String,System.String,System.String[])">
+            <summary>
+                Layouts and renders a graph.
+            </summary>
+            <param name="graphFilePath">Path to graph file, can be null but then the graph must not be null.</param>
+            <param name="graph">The graph, can be null but then the graph file path must not be null.</param>
+            <param name="outputFilePath">Path to output file. If it's null, the return will have the command line output.</param>
+            <param name="layoutAlgorithm">
+                The layout algorithm, if it's null it will default to "dot". See
+                https://www.graphviz.org/pdf/dot.1.pdf for more layout algorithms.
+            </param>
+            <param name="outputFormat">
+                The output format, if it's null it will default to "dot". See
+                https://www.graphviz.org/doc/info/output.html for more output formats.
+            </param>
+            <param name="extraCommandLineFlags">Any extra command line flags. See https://www.graphviz.org/doc/info/command.html </param>
+            <returns>The output of the command line.</returns>
+        </member>
+        <member name="M:GraphVizNet.GraphViz.BuildCommandLineArguments(System.String,System.String,System.String,System.String,System.String[])">
+            <summary>
+                Utility function to build command line arguments for the dot executable.
+            </summary>
+            <param name="inputFilePath"></param>
+            <param name="outputFilePath"></param>
+            <param name="layout"></param>
+            <param name="format"></param>
+            <param name="extraCommandLineFlags"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GraphVizNet.GraphVizConfig">
+            <summary>
+                GraphViz configuration.
+            </summary>
+        </member>
+        <member name="P:GraphVizNet.GraphVizConfig.Default">
+            <summary>
+                Default GraphViz configuration.
+            </summary>
+        </member>
+        <member name="P:GraphVizNet.GraphVizConfig.TimeoutInMs">
+            <summary>
+                Specifies the timeout (in milliseconds) for the launched process.
+            </summary>
+        </member>
+        <member name="P:GraphVizNet.GraphVizConfig.TreatWarningsAsErrors">
+            <summary>
+                True if rendering throws exception if there are any warnings, false otherwise.
+            </summary>
+        </member>
+        <member name="T:GraphVizNet.GraphVizException">
+            <summary>
+                Models exceptions that happen during layout and rendering.
+            </summary>
+        </member>
+        <member name="M:GraphVizNet.GraphVizException.#ctor(System.String)">
+            <summary>
+                Creates a GraphVizException instance with a message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+    </members>
+</doc>

@@ -5,14 +5,23 @@ using System.Text;
 
 namespace GraphVizNet
 {
+    /// <summary>
+    ///     The GraphViz wrapper class.
+    /// </summary>
     public class GraphViz
     {
-        public GraphVizConfig Config { get; }
-
+        /// <summary>
+        ///     Creates a new GraphViz wrapper instance.
+        /// </summary>
         public GraphViz()
         {
             Config = GraphVizConfig.Default;
         }
+
+        /// <summary>
+        ///     The GraphViz configuration.
+        /// </summary>
+        public GraphVizConfig Config { get; }
 
         /// <summary>
         ///     Layouts and renders a graph in DOT format from a file.
@@ -150,7 +159,7 @@ namespace GraphVizNet
             }
 
             byte[] result;
-            using(Stream baseStream = graphVizProcess.StandardOutput.BaseStream)
+            using (Stream baseStream = graphVizProcess.StandardOutput.BaseStream)
             using (var memoryStream = new MemoryStream())
             {
                 baseStream.CopyTo(memoryStream);
