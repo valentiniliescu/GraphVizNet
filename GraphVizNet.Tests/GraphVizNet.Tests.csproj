@@ -18,17 +18,4 @@
     <ProjectReference Include="..\GraphVizNet\GraphVizNet.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="LayoutAndRenderTests.RenderFromGraphInFile.approved.png">
-      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
-      <ParentExtension>$(ProjectExt.Replace('proj', ''))</ParentExtension>
-      <DependentUpon>LayoutAndRenderTests.cs</DependentUpon>
-    </None>
-    <None Update="LayoutAndRenderTests.RenderFromInMemoryGraph.approved.png">
-      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
-      <ParentExtension>$(ProjectExt.Replace('proj', ''))</ParentExtension>
-      <DependentUpon>LayoutAndRenderTests.cs</DependentUpon>
-    </None>
-  </ItemGroup>
-
 </Project>
