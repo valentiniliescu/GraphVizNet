@@ -140,9 +140,9 @@ namespace GraphVizNet
                 StartInfo = new ProcessStartInfo
                 {
                     CreateNoWindow = true,
-                    FileName = "graphviz/dot",
+                    FileName = Path.Combine(Config.GraphVizBinariesDirectory, "dot"),
                     Arguments = arguments,
-                    WorkingDirectory = "graphviz",
+                    WorkingDirectory = Config.GraphVizBinariesDirectory,
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
                     RedirectStandardInput = true,

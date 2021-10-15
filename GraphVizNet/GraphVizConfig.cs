@@ -10,7 +10,7 @@
         /// </summary>
         public static GraphVizConfig Default
         {
-            get { return new GraphVizConfig {TimeoutInMs = 30000, TreatWarningsAsErrors = false}; }
+            get { return new GraphVizConfig {TimeoutInMs = 30000, TreatWarningsAsErrors = false, GraphVizBinariesDirectory = "graphviz" }; }
         }
 
         /// <summary>
@@ -22,5 +22,10 @@
         ///     True if rendering throws exception if there are any warnings, false otherwise.
         /// </summary>
         public bool TreatWarningsAsErrors { get; set; }
+
+        /// <summary>
+        ///     The location of the GraphViz binaries directory.
+        /// </summary>
+        public string GraphVizBinariesDirectory { get; set; }
     }
 }

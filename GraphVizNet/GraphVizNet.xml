@@ -112,6 +112,11 @@
                 True if rendering throws exception if there are any warnings, false otherwise.
             </summary>
         </member>
+        <member name="P:GraphVizNet.GraphVizConfig.GraphVizBinariesDirectory">
+            <summary>
+                The location of the GraphViz binaries directory.
+            </summary>
+        </member>
         <member name="T:GraphVizNet.GraphVizException">
             <summary>
                 Models exceptions that happen during layout and rendering.

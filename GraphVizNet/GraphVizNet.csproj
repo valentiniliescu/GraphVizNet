@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>graphviz dot graph rendering plotting graphviznet</PackageTags>
     <Description>.NET wrapper for the command-line GraphViz native binaries. The binaries (version 2.44.0) are included and deployed with this package.</Description>
