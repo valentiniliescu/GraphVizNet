@@ -37,8 +37,9 @@ For more flexible rendering use the `LayoutAndRender` method, with the parameter
 
 
 These are the settings for the wrapper itself:
-* `TimeoutInMs` - specifies the timeout (in milliseconds) for the launched process.
-* `TreatWarningsAsErrors` - throws exception on rendering if there are any warnings.
+* `TimeoutInMs` - specifies the timeout (in milliseconds) for the launched process, default is 30000.
+* `TreatWarningsAsErrors` - throws exception on rendering if there are any warnings, default is false.
+* `GraphVizBinariesDirectory` - specifies the location of the GraphViz binaries, default is `graphviz`.
 ```csharp
 var graphViz = new GraphViz();
 graphViz.Config.TreatWarningsAsErrors = true;
